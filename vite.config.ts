@@ -49,6 +49,14 @@
         '@': path.resolve(__dirname, './src'),
       },
     },
+    import { defineConfig } from 'vite';
+
+export default defineConfig({
+  build: {
+    outDir: 'build', // pasta que o Vercel vai usar
+  },
+});
+
     build: {
       target: 'esnext',
       outDir: 'build',
