@@ -6,10 +6,33 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Geekonecta Mobile App Design</title>
     </head>
+<form id="leadForm">
+  <input type="text" id="nome" placeholder="Digite seu nome">
+  <button type="submit">Enviar</button>
+</form>
 
     <body>
       <div id="root"></div>
       <script type="module" src="/src/main.tsx"></script>
+      <script>
+document.getElementById('leadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nome = document.getElementById('nome').value;
+
+  fetch("https://hook.us2.make.com/q5xwbt9j49awf2velfftfpdskfx7hprm", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nome: nome })
+  }).then(() => {
+    alert('Enviado com sucesso!');
+    document.getElementById('leadForm').reset();
+  }).catch((err) => {
+    alert('Erro ao enviar. Tente novamente.');
+    console.error(err);
+  });
+});
+</script>
+
     </body>
   </html>
   
